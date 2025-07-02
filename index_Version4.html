@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Junaid Loves Keurha</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Pacifico&family=Quicksand:wght@400;700&display=swap');
+    html, body {
+      margin: 0;
+      padding: 0;
+      min-height: 100vh;
+      width: 100vw;
+      box-sizing: border-box;
+      overflow-x: hidden;
+      user-select: none;
+    }
+    body {
+      /* Scenic layered background: sky, clouds, mountains, grass */
+      background: linear-gradient(#b3e0ff 0%, #fbeffb 80%, #a8e6cf 100%);
+      min-height: 100vh;
+      font-family: 'Quicksand', Arial, sans-serif;
+      position: relative;
+    }
+    /* Sky and sun */
+    .bg-scenery {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100vw; height: 100vh;
+      z-index: 0;
+      pointer-events: none;
+      overflow: hidden;
+    }
+    /* Clouds */
+    .cloud {
+      position: absolute;
+      background: #fff;
+      border-radius: 50%;
+      opacity: 0.7;
+      animation: cloud-move 60s linear infinite;
+      filter: blur(1px);
+    }
+    @keyframes cloud-move {
+      0% { left: -200px; }
+      100% { left: 110vw; }
+    }
+    /* Mountains */
+    .mountains {
+      position: absolute;
+      bottom: 0; left: 0;
+      width: 100vw; height: 30vh;
+      z-index: 1;
+      pointer-events: none;
+    }
+    /* Grass */
+    .grass {
+      position: absolute;
+      bottom: 0; left: 0;
+      width: 100vw; height: 12vh;
+      background: linear-gradient(to top, #69d47a 85%, #a8e6cf 100%);
+      z-index: 2;
+      border-top-left-radius: 40vw 10vh;
+      border-top-right-radius: 40vw 10vh;
+    }
+    /* Sun */
+    .sun {
+      position: absolute;
+      top: 60px;
+      left: 60vw;
+      width: 120px;
+      height: 120px;
+      background: radial-gradient(circle at 50% 50%, #fffde4 60%, #ffe066 100%);
+      border-radius: 50%;
+      z-index: 2;
+      opacity: 0.85;
+      box-shadow: 0 0 70px 30px #fff9c4, 0 0 100px 40px #ffe06699;
+      animation: sun-float 7s ease-in-out infinite alternate;
+    }
+    @keyframes sun-float {
+      0% { top: 60px;}
+      100% { top: 100px;}
+    }
+    /* Foreground content styling */
+    h1 {
+      font-family: 'Pacifico', cursive;
+      font-size: 3rem;
+      color: #ff69b4;
+      margin-top: 50px;
+      letter-spacing: 2px;
+      text-shadow: 1px 2px 8px #fff;
+      z-index: 10;
+      position: relative;
+    }
+    .love-message {
+      font-size: 1.6rem;
+      color: #444;
+      max-width: 650px;
+      margin: 30px auto 40px auto;
+      background: rgba(255,255,255,0.85);
+      border-radius: 22px;
+      padding: 28px;
+      box-shadow: 0 6px 32px #ffc1e3aa;
+      line-height: 1.7;
+      z-index: 10;
+      position: relative;
+    }
+    .cute-btn {
+      background: linear-gradient(90deg, #ffd6e0 0%, #d0f4de 100%);
+      border: none;
+      color: #ff4d6d;
+      font-family: 'Pacifico', cursive;
+      font-size: 1.5rem;
+      padding: 18px 36px;
+      border-radius: 36px;
+      box-shadow: 0 4px 20px #ffb3c6aa;
+      cursor: pointer;
+      transition: transform 0.12s;
+      margin-bottom: 20px;
+      position: relative;
+      z-index: 10;
+    }
+    .cute-btn:hover {
+      transform: scale(1.07) rotate(-3deg);
+      background: linear-gradient(90deg, #d0f4de 10%, #ffd6e0 100%);
+    }
+    .falling {
+      position: fixed;
+      top: -80px;
+      left: 0;
+      pointer-events: none;
+      z-index: 1000;
+      animation: fall 2.5s linear forwards;
+      font-size: 2.8rem;
+      will-change: transform, opacity;
+    }
+    @keyframes fall {
+      to {
+        transform: translateY(110vh) rotate(360deg) scale(1.2);
+        opacity: 0.4;
+      }
+    }
+    .floating-butterfly {
+      animation: butterfly-float 4s ease-in-out infinite;
+    }
+    @keyframes butterfly-float {
+      0% { transform: translateY(0) rotate(-8deg);}
+      55% { transform: translateY(-28px) rotate(10deg);}
+      100% { transform: translateY(0) rotate(-8deg);}
+    }
+    .footer {
+      margin-top: 80px;
+      font-size: 1.1rem;
+      color: #999;
+      text-align: center;
+      letter-spacing: 1px;
+      z-index: 10;
+      position: relative;
+    }
+    @media (max-width: 600px) {
+      h1 { font-size: 2rem; }
+      .love-message { font-size: 1.1rem; padding: 14px; }
+      .sun { width: 80px; height: 80px; left: 40vw; top: 20px;}
+      .mountains { height: 15vh;}
+    }
+  </style>
+</head>
+<body>
+  <!-- Scenic Animated Background -->
+  <div class="bg-scenery" aria-hidden="true">
+    <!-- Sun -->
+    <div class="sun"></div>
+    <!-- Clouds -->
+    <div class="cloud" style="width:120px; height:40px; top:70px; left:10vw; animation-delay:0s;"></div>
+    <div class="cloud" style="width:90px; height:30px; top:130px; left:60vw; animation-delay:10s;"></div>
+    <div class="cloud" style="width:60px; height:22px; top:190px; left:30vw; animation-delay:20s;"></div>
+    <div class="cloud" style="width:130px; height:42px; top:100px; left:80vw; animation-delay:35s;"></div>
+    <div class="cloud" style="width:80px; height:30px; top:220px; left:15vw; animation-delay:55s;"></div>
+    <!-- Mountains (SVG) -->
+    <svg class="mountains" viewBox="0 0 100 30" preserveAspectRatio="none">
+      <polygon points="0,30 12,12 20,22 30,8 47,25 59,10 65,16 77,6 100,30" fill="#b2b8a3"/>
+      <polygon points="0,30 10,16 18,24 26,16 38,28 52,9 64,23 76,12 100,30" fill="#a5d6a7" opacity="0.7"/>
+      <polygon points="0,30 14,20 22,28 30,20 44,29 56,15 68,28 82,16 100,30" fill="#cce6a9" opacity="0.6"/>
+    </svg>
+    <!-- Grass -->
+    <div class="grass"></div>
+  </div>
+
+  <h1>
+    Junaid <span style="color:#ffb600;">❤️</span> Keurha
+  </h1>
+  <div class="love-message">
+    To my dearest Keurha,<br><br>
+    I love you more than all the cucumbers, boba pearls, butterflies, and kitties in the world combined! <br>
+    You light up my life and fill my heart with joy every day.<br>
+    Thank you for being my favorite person, my cutest cat, my boba buddy, and my everything. <br>
+    <span style="font-size:1.3em; color:#ff69b4;">You’re purr-fect, magical, and oh so loved!</span>
+    <br><br>
+    <span style="font-size:1.2em;">— Junaid 🥒🧋🦋🐱💖</span>
+  </div>
+  <div style="text-align:center;">
+    <button class="cute-btn" onclick="showerCuteness()">Shower with Cuteness!</button>
+  </div>
+  <div class="footer">
+    Made with endless love, cucumbers, and boba for Keurha
+  </div>
+  <script>
+    // Cuteness icons: hearts, butterflies, boba tea, cucumbers, cats/kitties
+    const cuteEmojis = [
+      "💖","🦋","🥒","🧋","🐱","😸","🐾","🥤","💞","😻","🐈","🍵","🍬","🌸","🌈","✨",
+      // SVGs for more variety:
+      '<svg width="36" height="36" style="vertical-align:middle;" viewBox="0 0 32 32"><ellipse cx="16" cy="16" rx="12" ry="8" fill="#8fd694"/><ellipse cx="16" cy="16" rx="10" ry="6" fill="#b1e48f" /><ellipse cx="16" cy="16" rx="3" ry="5" fill="#6dbf6f" /></svg>',
+      '<svg width="36" height="36" style="vertical-align:middle;" viewBox="0 0 32 32"><circle cx="16" cy="20" r="10" fill="#ffecb3"/><ellipse cx="16" cy="19" rx="8" ry="10" fill="#fff176"/><ellipse cx="16" cy="27" rx="6" ry="2" fill="#e1af7a"/><circle cx="12" cy="18" r="2" fill="#795548"/><circle cx="20" cy="18" r="2" fill="#795548"/><ellipse cx="16" cy="25" rx="3" ry="1" fill="#fff"/></svg>',
+      '<svg width="36" height="36" style="vertical-align:middle;" viewBox="0 0 32 32"><ellipse cx="16" cy="20" rx="12" ry="7" fill="#fff" /><ellipse cx="16" cy="20" rx="8" ry="5" fill="#cbb4d4" /><ellipse cx="11" cy="17" rx="2" ry="3" fill="#fff" /><ellipse cx="21" cy="17" rx="2" ry="3" fill="#fff" /><ellipse cx="11" cy="17" rx="1" ry="1.5" fill="#cbb4d4" /><ellipse cx="21" cy="17" rx="1" ry="1.5" fill="#cbb4d4" /><ellipse cx="16" cy="18" rx="1.5" ry="0.7" fill="#a578bb" /></svg>'
+    ];
+
+    // Butterfly SVG (animated)
+    const butterflySVG = `<svg width="40" height="36" viewBox="0 0 40 36" style="vertical-align:middle;" class="floating-butterfly">
+    <ellipse cx="10" cy="18" rx="10" ry="14" fill="#b388ff" opacity="0.8"/>
+    <ellipse cx="30" cy="18" rx="10" ry="14" fill="#ffb3e6" opacity="0.8"/>
+    <ellipse cx="20" cy="18" rx="4" ry="9" fill="#ffd6e0"/>
+    <ellipse cx="20" cy="16" rx="2" ry="3" fill="#ffe082"/>
+    <circle cx="20" cy="11" r="2" fill="#b388ff"/>
+    <rect x="19" y="10" rx="1" width="2" height="9" fill="#ffb300"/>
+    <rect x="18" y="7" rx="1" width="1" height="5" fill="#b388ff"/>
+    <rect x="21" y="7" rx="1" width="1" height="5" fill="#b388ff"/>
+    </svg>`;
+
+    function randomInt(min, max) {
+      return Math.floor(Math.random() * (max - min + 1)) + min;
+    }
+
+    function showerCuteness() {
+      const count = randomInt(18, 26);
+      const vw = Math.max(document.documentElement.clientWidth || 0, window.innerWidth || 0);
+
+      for (let i = 0; i < count; i++) {
+        let el = document.createElement('div');
+        el.className = 'falling';
+        // Randomly pick a cute item
+        let emoji;
+        if (Math.random() < 0.15) {
+          emoji = butterflySVG;
+        } else {
+          emoji = cuteEmojis[randomInt(0, cuteEmojis.length-1)];
+        }
+        el.innerHTML = emoji;
+        el.style.left = randomInt(0, vw - 60) + 'px';
+        el.style.fontSize = (randomInt(28, 48)) + "px";
+        el.style.animationDuration = (1.8 + Math.random()*1.7) + "s";
+        el.style.transform = `rotate(${randomInt(-20, 20)}deg) scale(${Math.random()*0.7+0.7})`;
+        document.body.appendChild(el);
+
+        // Remove after animation
+        setTimeout(() => {
+          el.remove();
+        }, 2700);
+      }
+    }
+  </script>
+</body>
+</html>
